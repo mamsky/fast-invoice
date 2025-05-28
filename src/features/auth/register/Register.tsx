@@ -27,7 +27,7 @@ function Register() {
           <Input id="email"
             placeholder="Email" type="email "
             {...register("email")}/>
-          {errors.email && <p >{errors.email.message}</p>}
+          {errors.email && <p className="text-destructive" >{errors.email.message}</p>}
           </div>
         <div>
           <label htmlFor="password" className="text-md">
@@ -35,7 +35,7 @@ function Register() {
           <Input id="password"
             type="password" placeholder="Password"
             {...register("password")}/>
-          {errors.password && <p >{errors.password.message}</p>}
+          {errors.password && <p className="text-destructive">{errors.password.message}</p>}
           </div>
         <Button className="text-lg cursor-pointer" type="submit">
           Register</Button>
