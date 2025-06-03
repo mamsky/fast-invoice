@@ -15,7 +15,14 @@ function Profile() {
   });
 
   const submit = (data: profileDTO) => {
-    console.log(data);
+    const formData = new FormData();
+    formData.append("image", data.image[0]);
+    formData.append("company", data.company);
+    formData.append("phone", data.phone);
+    formData.append("address", data.address);
+    for (const [key, value] of formData.entries()) {
+      console.log(key, value);
+    }
   };
   return (
     <div className="flex justify-center w-auto ">
@@ -31,7 +38,19 @@ function Profile() {
               src="https://api.dicebear.com/9.x/adventurer/svg?seed=Emery"
             />
           </label>
-          <Input type="file" id="image" hidden />
+          <Input
+            type="file"
+            id="image"
+            hidden
+            {...register("image")}
+            accept="image/*"
+          />
+          {errors.image && (
+            <p className="text-destructive">
+              {errors.image.message?.toString()}
+            </p>
+          )}
+
           <p className="text-sm">Upload Profile</p>
         </div>
 
